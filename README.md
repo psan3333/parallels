@@ -1,5 +1,6 @@
 # parallels
 (time: секунды - везде в тексте + все эксперименты проводились на сервере НГУ)
+
 For double:
 1. Sum + initialization (GPU): 1.012548; time: 0.036696
 
