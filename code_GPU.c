@@ -5,6 +5,7 @@
 #define N 10000000
 #define PI 3.14159265358979323846
 #define angle (2 * PI / N);
+#define PGI_ACC_TIME 1
 
 void initialize_arr(double* sin_values) {
     double inc = 0;
