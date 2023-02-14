@@ -28,6 +28,10 @@ double summ_vals(double* sin_values){
 int main() {
 
     double* new_sin = (double*)calloc(N, sizeof(double));
+    clock_t s_copy = clock();
+    #pragma acc data copy(new_sin[0:N])
+    clock_t e_copy = clock();
+    printf("delta time 'pragma acc data copy(new_sin[0:N])': %lf", (double)(e_copy - s_copy) / CLOCKS_PER_SEC);
     clock_t start = clock();
     initialize_arr(new_sin);
     double summ = summ_vals(new_sin);
