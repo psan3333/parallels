@@ -7,24 +7,6 @@
 #define angle (2 * PI / N);
 #define PGI_ACC_TIME 1
 
-void initialize_arr(double* sin_values) {
-    double inc = 0;
-    #pragma acc parallel loop gang worker num_workers(4) vector_length(32)
-    for (int i = 0; i < N; i++){
-        sin_values[i] = sin(inc);
-        inc += angle;
-    }
-}
-
-double summ_vals(double* sin_values){
-    double summ = 0.0f;
-    #pragma acc parallel loop reduction(+:summ)
-    for (int i = 0; i < N; i++) {
-        summ += sin_values[i];
-    }
-    return summ;
-}
-
 int main() {
 
     double* new_sin = (double*)calloc(N, sizeof(double));
