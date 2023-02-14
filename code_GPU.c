@@ -34,7 +34,7 @@ int main() {
     #pragma acc data copy(sin_values[0:N])
     clock_t end_copy = clock();
     double copy_time = (double)(end_copy - start_copy) / CLOCKS_PER_SEC;
-    printf("delta time 'pragma acc data copy(new_sin[0:N])': %lf", copy_time);
+    printf("delta time 'pragma acc data copy(new_sin[0:N])': %lf\n", copy_time);
     
     //подсчёт времени инициализации и подсчёта суммы элементов массива на GPU
     clock_t calc_init_start = clock();
