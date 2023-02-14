@@ -42,7 +42,7 @@ int main() {
     double summ = summ_vals_gpu(sin_values);
     clock_t calc_init_end = clock();
     double calc_init_time = (double)(calc_init_end - calc_init_start) / CLOCKS_PER_SEC;
-    printf("Sum 2: %lf; time: %lf\n", summ, calc_init_time);
+    printf("Sum + initialization (GPU): %lf; time: %lf\n", summ, calc_init_time);
 
     free(sin_values);
 
