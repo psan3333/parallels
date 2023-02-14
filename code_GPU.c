@@ -27,18 +27,24 @@ double summ_vals(double* sin_values){
 
 int main() {
 
-    double* new_sin = (double*)calloc(N, sizeof(double));
-    clock_t s_copy = clock();
-    #pragma acc data copy(new_sin[0:N])
-    clock_t e_copy = clock();
-    printf("delta time 'pragma acc data copy(new_sin[0:N])': %lf", (double)(e_copy - s_copy) / CLOCKS_PER_SEC);
-    clock_t start = clock();
-    initialize_arr(new_sin);
-    double summ = summ_vals(new_sin);
-    clock_t end = clock();
-    printf("Sum 2: %lf; time: %lf\n", summ, (double)(end - start) / CLOCKS_PER_SEC);
+    double* sin_values = (double*)calloc(N, sizeof(double));
+    
+    //подсчёт времени копирования данных с CPU на GPU
+    clock_t start_copy = clock();
+    #pragma acc data copy(sin_values[0:N])
+    clock_t end_copy = clock();
+    double copy_time = (double)(end_copy - start_copy) / CLOCKS_PER_SEC;
+    printf("delta time 'pragma acc data copy(new_sin[0:N])': %lf", copy_time);
+    
+    //подсчёт времени инициализации и подсчёта суммы элементов массива на GPU
+    clock_t calc_init_start = clock();
+    initialize_arr(sin_values);
+    double summ = summ_vals(sin_values);
+    clock_t calc_init_end = clock();
+    double calc_init_time = (double)(calc_init_end - calc_init_start) / CLOCKS_PER_SEC;
+    printf("Sum 2: %lf; time: %lf\n", summ, calc_init_time);
 
-    free(new_sin);
+    free(sin_values);
 
     return 0;
 }
