@@ -9,18 +9,19 @@
 
 int main() {
 
-    double* new_sin = (double*)calloc(N, sizeof(double));
-    clock_t start = clock();
-    double summ = 0.0f, inc = 0.0f;
+    //инициализация и подсчёт суммы элементов массива на CPU
+    double* sin_values = (double*)calloc(N, sizeof(double));
+    clock_t calc_init_start = clock();
+    double summ = 0.0f, calc_sin_angle = 0.0f;
     for (int i = 0; i < N; i++) {
-        new_sin[i] = sin(inc);
-        inc += angle;
-        summ += new_sin[i];
+        sin_values[i] = sin(calc_sin_angle);
+        calc_sin_angle += angle;
+        summ += sin_values[i];
     }
-    clock_t end = clock();
-    printf("Sum 2: %lf; time: %lf\n", summ, (double)(end - start) / CLOCKS_PER_SEC);
+    clock_t calc_init_end = clock();
+    printf("Sum 2: %lf; time: %lf\n", summ, (double)(calc_init_end - calc_init_start) / CLOCKS_PER_SEC);
 
-    free(new_sin);
+    free(sin_values);
 
     return 0;
 }
