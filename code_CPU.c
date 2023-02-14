@@ -19,7 +19,7 @@ int main() {
         summ += sin_values[i];
     }
     clock_t calc_init_end = clock();
-    printf("Sum 2: %lf; time: %lf\n", summ, (double)(calc_init_end - calc_init_start) / CLOCKS_PER_SEC);
+    printf("Sum + initialization (CPU): %lf; time: %lf\n", summ, (double)(calc_init_end - calc_init_start) / CLOCKS_PER_SEC);
 
     free(sin_values);
 
