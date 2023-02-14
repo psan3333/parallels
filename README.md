@@ -1,4 +1,5 @@
 # parallels
+(time: секунды - везде в тексте)
 For double:
 1. Sum + initialization (GPU): 1.012548; time: 0.036696
 
@@ -14,3 +15,6 @@ For float:
 
 Вывод:
 float и double на GPU имеют примерно одинаковую точность расчётов, хотя и уступают double на CPU. float CPU имеет самую низкую точность расчётов.
+
+Время копирования с CPU на GPU:
+delta time 'pragma acc data copy(new_sin[0:N])': 3.197533 - достаточно долго
