@@ -4,7 +4,6 @@
 #include <math.h>
 #define N 10000000
 #define PI 3.14159265358979323846
-#define PGI_ACC_TIME 1
 
 int main()
 {
