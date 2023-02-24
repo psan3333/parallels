@@ -5,13 +5,18 @@
 #define N 10000000
 #define PI 3.14159265358979323846
 
-int main() {
+int main()
+{
 
-    float* sin_values = (float*)calloc(N, sizeof(float));
+    float *sin_values = (float *)calloc(N, sizeof(float));
     clock_t calc_init_start = clock();
     float summ = 0.0f;
-    for (int i = 0; i < N; i++) {
+    for (int i = 0; i < N; i++)
+    {
         sin_values[i] = sinf(2 * PI * i / N);
+    }
+    for (int i = 0; i < N; i++)
+    {
         summ += sin_values[i];
     }
     clock_t calc_init_end = clock();
